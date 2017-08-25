@@ -1,0 +1,22 @@
+version: '2'
+services:
+
+    instance1-mrs:
+      image: fikipollo/mrs
+      container_name: instance1-mrs
+      environment:
+        - MRS_ADMIN_EMAIL=admin
+        - MRS_ADMIN_PASSWORD=supersecret
+      depends_on:
+        - instance1-mrs-data
+      volumes_from:
+        - instance1-mrs-data
+      ports:
+        - "18090:18090"
+
+    instance1-mrs-data:
+      image: busybox
+      container_name: instance1-mrs-data
+      volumes:
+        - /home/foo/dockers/mrs/data:/data
+        - /home/foo/dockers/mrs/log:/log

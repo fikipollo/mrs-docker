@@ -1,0 +1,33 @@
+############################################################
+# Launcher for MRS container
+# This is a template, the following values must be replaced:
+#   - $${INSTANCE_NAME}, name for the instance
+#   - $${INSTANCE_PORT_1}, port number for MRS instance
+#   - $${ADMIN_EMAIL}, email for admin user
+#   - $${ADMIN_PASS}, email for admin user
+# TODO:
+# - Change admin credentials
+############################################################
+
+version: '2'
+services:
+
+    $${INSTANCE_NAME}-mrs:
+      image: fikipollo/mrs
+      container_name: $${INSTANCE_NAME}-mrs
+      environment:
+        - MRS_ADMIN_EMAIL=$${ADMIN_EMAIL}
+        - MRS_ADMIN_PASSWORD=$${ADMIN_PASS}
+      depends_on:
+        - $${INSTANCE_NAME}-mrs-data
+      volumes_from:
+        - $${INSTANCE_NAME}-mrs-data
+      ports:
+        - "$${INSTANCE_PORT_1}:18090"
+
+    $${INSTANCE_NAME}-mrs-data:
+      image: busybox
+      container_name: $${INSTANCE_NAME}-mrs-data
+      volumes:
+        - /data/$${INSTANCE_NAME}-data/data:/data
+        - /data/$${INSTANCE_NAME}-data/log:/log
