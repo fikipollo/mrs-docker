@@ -5,8 +5,6 @@
 #   - $${INSTANCE_PORT_1}, port number for MRS instance
 #   - $${ADMIN_EMAIL}, email for admin user
 #   - $${ADMIN_PASS}, email for admin user
-# TODO:
-# - Change admin credentials
 ############################################################
 
 version: '2'

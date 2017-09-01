@@ -80,3 +80,6 @@ $ m6 fetch enzyme
 $ m6 build enzyme
 ```
 All data will be stored at /data/ directory.
+
+# Version log
+  - v0.9 August 2017: First version of the docker. MRS version 6.0.5.
